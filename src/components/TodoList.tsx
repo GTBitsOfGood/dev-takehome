@@ -1,4 +1,5 @@
 import React from 'react'
+import { TodoItem } from './TodoItem'
 /**
  * Thank you for applying to Bits of Good. You are free to add/delete/modify any 
  * parts of this project. That includes changing the types.ts, creating css files, 
@@ -16,17 +17,19 @@ import React from 'react'
 
 // Here's a baseline todo item type. 
 // Feel free to extend or create your own interface!
-export type TodoItem = {
-  title: string,
-  dueDate: Date,
-  tagList: string[],
-  completed: boolean,
+
+interface Props {
+  todos: Todo[];
+  toggleTodo: ToggleTodo;
 }
 
-export default function TodoList() {
+export const TodoList: React.FC<Props> = ({ todos, toggleTodo }) => {
   return (
-    <div>
-      <h3>Todo List!</h3>
-    </div>
-  )
-}
+    <ul>
+      {todos.map(todo => (
+        <TodoItem key={todo.title} todo={todo} toggleTodo={toggleTodo} />
+      ))}
+    </ul>
+  );
+};
+
