@@ -87,7 +87,8 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
     const [title, setTitle] = useState('');
     const [tagList, setTagList] = useState<string[]>([])
     const [tag, setTag] = useState('');
-    const [dueDate, setDueDate] = useState("2018-07-22");
+    const [wrongForm, setWrongForm] = useState<boolean>(false);
+    const [dueDate, setDueDate] = useState(new Date().toLocaleDateString()); //auto set date to today's date
     // function handleAddTag(){ 
     //     const updateTags = [
     //         ...tagList,
@@ -96,7 +97,14 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
     //     console.log(tagList)
     //     setTagList(updateTags);
     // }
-    
+    function ErrorMessage() {
+       if(wrongForm){
+           return <div className='error'>YOU MUST ENTER A TITLE AND DATE!</div> 
+       }
+       else{
+           return <div></div>
+       }
+    }
     
     return (
         <Styles>
@@ -109,6 +117,7 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
                     onChange = {e => {
                         setTitle(e.target.value);
                     }}
+                    
                 />
                 <br></br>
                 <label>Tags</label>
@@ -161,12 +170,18 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
                     type='submit'
                     onClick={e => {
                         e.preventDefault();
+                        if (!title){
+                            setWrongForm(true);
+                            return;
+                        }
                         addTodo(title, new Date(dueDate), tagList);
                         setTitle('');
                         setTagList([])
+                        setWrongForm(false);
                     }}>
                         Add Todo
                 </PrimaryButton>
+                <ErrorMessage></ErrorMessage>
             </form>
         </Styles>
     );

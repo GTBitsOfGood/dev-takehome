@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { TodoItem } from './TodoItem'
+
 /**
  * Thank you for applying to Bits of Good. You are free to add/delete/modify any 
  * parts of this project. That includes changing the types.ts, creating css files, 
@@ -24,6 +25,7 @@ interface Props {
 }
 
 export const TodoList: React.FC<Props> = ({ todos, toggleTodo }) => {
+  
   return (
     <ul>
       {todos.map(todo => (

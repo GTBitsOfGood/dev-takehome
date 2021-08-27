@@ -2,9 +2,21 @@
   text-align: center;
 }
 
+.wrapper{
+  text-align: center;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+#dateSort:focus {
+  background-color: #61dafb;
+}
+
+#finishedSort:focus {
+  background-color: #61dafb;
 }
 
 @media (prefers-reduced-motion: no-preference) {
