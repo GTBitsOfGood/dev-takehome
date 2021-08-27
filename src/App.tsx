@@ -1,7 +1,7 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 // import TodoList from './components/TodoList';
-import { TodoItem } from './components/TodoItem';
+// import { TodoItem } from './components/TodoItem';
 import { TodoList } from './components/TodoList';
 import { TodoForm } from  './components/TodoForm'
 import { useState } from 'react';

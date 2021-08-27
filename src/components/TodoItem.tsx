@@ -7,7 +7,7 @@ interface Props {
 
 export const TodoItem: React.FC<Props> = ({ todo, toggleTodo }) => {
     return (
-        <li>
+      <li>
         <label
           style={{ textDecoration: todo.complete ? 'line-through' : undefined }}
         >
@@ -15,11 +15,12 @@ export const TodoItem: React.FC<Props> = ({ todo, toggleTodo }) => {
           toggleTodo(todo);  
          }}/> 
         
-         {todo.title}
-         {todo.tagList}
+         {todo.title + " "}
+        
+         {todo.tagList.join(' ')}
          {/* {todo.dueDate} */}
         </label>
-      </li>  
+     </li>  
     );
 }
 
